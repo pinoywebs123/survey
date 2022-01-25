@@ -106,7 +106,7 @@ class AuthController extends Controller
             $user = User::create($credential);
 
            
-            $user->assignRole('USER');
+            $user->assignRole('ADMIN');
 
             DB::commit();
             return back()->with('success','Successfully Registered!');
