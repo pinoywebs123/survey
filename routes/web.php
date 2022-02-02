@@ -21,6 +21,17 @@ Route::get('/section4','UserController@section4')->name('section4');
 Route::get('/message','UserController@message')->name('message');
 
 Route::post('/section2_batch1','UserController@section2_batch1')->name('section2_batch1');
+Route::post('/section2_batch2','UserController@section2_batch2')->name('section2_batch2');
+Route::post('/section2_batch3','UserController@section2_batch3')->name('section2_batch3');
+Route::post('/section2_batch4','UserController@section2_batch4')->name('section2_batch4');
+Route::post('/section2_batch5','UserController@section2_batch5')->name('section2_batch5');
+
+
+Route::post('/section4_batch1','UserController@section4_batch1')->name('section4_batch1');
+Route::post('/section4_batch2','UserController@section4_batch2')->name('section4_batch2');
+Route::post('/section4_batch3','UserController@section4_batch3')->name('section4_batch3');
+Route::post('/section4_batch4','UserController@section4_batch4')->name('section4_batch4');
+Route::post('/section4_batch5','UserController@section4_batch5')->name('section4_batch5');
 
 Route::get('/home-admin','UserController@home_admin')->name('home_admin');
 Route::get('/users-list','UserController@users_list')->name('users_list');

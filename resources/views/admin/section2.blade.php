@@ -157,7 +157,26 @@
 
                                 @foreach($sec->questions as $key => $quest)
                                   
-                                  <input type="radio" name="question_list_batch_two_id" value="{{$quest->id}}" class="question_list_id" data-question_id="{{$sec->id}}"> {{$quest->name}}
+                                  <?php 
+                                    $answer_result = \App\Answer2::where('question_id',$sec->id)->where('user_id', Auth::id())->where('answer',$quest->id)->first();
+                                    
+                                    if($answer_result){
+                                      ?>
+
+                                        <input type="radio" value="{{$quest->id}}" class="question_list_id2" data-question_id="{{$sec->id}}" checked> {{$quest->name}}
+                                      <?php
+                                    }else {
+
+                                      ?>
+                                      <input type="radio" value="{{$quest->id}}" class="question_list_id2" data-question_id="{{$sec->id}}"> {{$quest->name}}
+                                      <?php
+                                    }
+                                    
+                                   
+                                    
+
+                                  ?>
+                                  
                                   
                                 @endforeach
 
@@ -207,7 +226,26 @@
 
                                 @foreach($sec->questions as $key => $quest)
                                   
-                                  <input type="radio" name="question_list_batch_two_id" value="{{$quest->id}}" class="question_list_id" data-question_id="{{$sec->id}}"> {{$quest->name}}
+                                  <?php 
+                                    $answer_result = \App\Answer3::where('question_id',$sec->id)->where('user_id', Auth::id())->where('answer',$quest->id)->first();
+                                    
+                                    if($answer_result){
+                                      ?>
+
+                                        <input type="radio" value="{{$quest->id}}" class="question_list_id3" data-question_id="{{$sec->id}}" checked> {{$quest->name}}
+                                      <?php
+                                    }else {
+
+                                      ?>
+                                      <input type="radio" value="{{$quest->id}}" class="question_list_id3" data-question_id="{{$sec->id}}"> {{$quest->name}}
+                                      <?php
+                                    }
+                                    
+                                   
+                                    
+
+                                  ?>
+                                  
                                   
                                 @endforeach
 
@@ -257,7 +295,26 @@
 
                                 @foreach($sec->questions as $key => $quest)
                                   
-                                  <input type="radio" name="question_list_batch_two_id" value="{{$quest->id}}" class="question_list_id" data-question_id="{{$sec->id}}"> {{$quest->name}}
+                                  <?php 
+                                    $answer_result = \App\Answer4::where('question_id',$sec->id)->where('user_id', Auth::id())->where('answer',$quest->id)->first();
+                                    
+                                    if($answer_result){
+                                      ?>
+
+                                        <input type="radio" value="{{$quest->id}}" class="question_list_id4" data-question_id="{{$sec->id}}" checked> {{$quest->name}}
+                                      <?php
+                                    }else {
+
+                                      ?>
+                                      <input type="radio" value="{{$quest->id}}" class="question_list_id4" data-question_id="{{$sec->id}}"> {{$quest->name}}
+                                      <?php
+                                    }
+                                    
+                                   
+                                    
+
+                                  ?>
+                                  
                                   
                                 @endforeach
 
@@ -306,7 +363,26 @@
 
                                 @foreach($sec->questions as $key => $quest)
                                   
-                                  <input type="radio" name="question_list_batch_two_id" value="{{$quest->id}}" class="question_list_id" data-question_id="{{$sec->id}}"> {{$quest->name}}
+                                  <?php 
+                                    $answer_result = \App\Answer5::where('question_id',$sec->id)->where('user_id', Auth::id())->where('answer',$quest->id)->first();
+                                    
+                                    if($answer_result){
+                                      ?>
+
+                                        <input type="radio" value="{{$quest->id}}" class="question_list_id5" data-question_id="{{$sec->id}}" checked> {{$quest->name}}
+                                      <?php
+                                    }else {
+
+                                      ?>
+                                      <input type="radio" value="{{$quest->id}}" class="question_list_id5" data-question_id="{{$sec->id}}"> {{$quest->name}}
+                                      <?php
+                                    }
+                                    
+                                   
+                                    
+
+                                  ?>
+                                  
                                   
                                 @endforeach
 
@@ -417,17 +493,112 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
   <script type="text/javascript">
     $(document).ready(function(){
+      var url = '{{route("section2_batch1")}}';
+      var url2 = '{{route("section2_batch2")}}';
+      var url3 = '{{route("section2_batch3")}}';
+      var url4 = '{{route("section2_batch4")}}';
+      var url5 = '{{route("section2_batch5")}}';
+
+
       $(".question_list_id").change(function(){
 
         var answer = $(this).val();
         var user_id = '{{Auth::id()}}';
-        var url = '{{route("section2_batch1")}}';
+        
         var question_id = $(this).attr("data-question_id");
 
         var token = '{{Session::token()}}';
           $.ajax({
             method:'POST',
             url:url,
+            data:{_token : token,user_id: user_id, answer: answer, question_id: question_id},
+              success:function(data) {
+                  console.log(data);
+                  $
+                 
+              }
+          });
+        
+
+      });
+
+      $(".question_list_id2").change(function(){
+
+        var answer = $(this).val();
+        var user_id = '{{Auth::id()}}';
+        
+        var question_id = $(this).attr("data-question_id");
+
+        var token = '{{Session::token()}}';
+          $.ajax({
+            method:'POST',
+            url:url2,
+            data:{_token : token,user_id: user_id, answer: answer, question_id: question_id},
+              success:function(data) {
+                  console.log(data);
+                  $
+                 
+              }
+          });
+        
+
+      });
+
+      $(".question_list_id3").change(function(){
+
+        var answer = $(this).val();
+        var user_id = '{{Auth::id()}}';
+        
+        var question_id = $(this).attr("data-question_id");
+
+        var token = '{{Session::token()}}';
+          $.ajax({
+            method:'POST',
+            url:url3,
+            data:{_token : token,user_id: user_id, answer: answer, question_id: question_id},
+              success:function(data) {
+                  console.log(data);
+                  $
+                 
+              }
+          });
+        
+
+      });
+
+      $(".question_list_id4").change(function(){
+
+        var answer = $(this).val();
+        var user_id = '{{Auth::id()}}';
+        
+        var question_id = $(this).attr("data-question_id");
+
+        var token = '{{Session::token()}}';
+          $.ajax({
+            method:'POST',
+            url:url4,
+            data:{_token : token,user_id: user_id, answer: answer, question_id: question_id},
+              success:function(data) {
+                  console.log(data);
+                  $
+                 
+              }
+          });
+        
+
+      });
+
+      $(".question_list_id5").change(function(){
+
+        var answer = $(this).val();
+        var user_id = '{{Auth::id()}}';
+        
+        var question_id = $(this).attr("data-question_id");
+
+        var token = '{{Session::token()}}';
+          $.ajax({
+            method:'POST',
+            url:url5,
             data:{_token : token,user_id: user_id, answer: answer, question_id: question_id},
               success:function(data) {
                   console.log(data);

@@ -18,6 +18,18 @@ use App\SectionFourBatchTwo;
 use App\SectionFour;
 
 use App\Answer;
+use App\Answer2;
+use App\Answer3;
+use App\Answer4;
+use App\Answer5;
+
+use App\Answer6;
+use App\Answer7;
+use App\Answer8;
+use App\Answer9;
+use App\Answer10;
+
+use Auth;
 
 class UserController extends Controller
 {
@@ -40,13 +52,192 @@ class UserController extends Controller
 
     public function section2_batch1(Request $request)
     {
-        $ans = new Answer;
-        $ans->user_id = $request->user_id;
-        $ans->question_id = $request->question_id;
-        $ans->answer =  $request->answer;
-        $ans->save();
+        $find = Answer::where('user_id',Auth::id())->where('question_id', $request->question_id)->first();
+        if($find) {
+            $find->update([
+                'answer'=> $request->answer
+            ]);
+        }else{
+           $ans = new Answer;
+            $ans->user_id = $request->user_id;
+            $ans->question_id = $request->question_id;
+            $ans->answer =  $request->answer;
+            $ans->save(); 
+        }
+        
 
-        return response()->json(['status'=> 200, 'data'=> $ans]);
+        return response()->json(['status'=> 200, 'message'=> 'success']);
+    }
+
+    public function section2_batch2(Request $request)
+    {
+        $find = Answer2::where('user_id',Auth::id())->where('question_id', $request->question_id)->first();
+        if($find) {
+            $find->update([
+                'answer'=> $request->answer
+            ]);
+        }else{
+           $ans = new Answer2;
+            $ans->user_id = $request->user_id;
+            $ans->question_id = $request->question_id;
+            $ans->answer =  $request->answer;
+            $ans->save(); 
+        }
+        
+
+        return response()->json(['status'=> 200, 'message'=> 'success']);
+    }
+
+    public function section2_batch3(Request $request)
+    {
+        $find = Answer3::where('user_id',Auth::id())->where('question_id', $request->question_id)->first();
+        if($find) {
+            $find->update([
+                'answer'=> $request->answer
+            ]);
+        }else{
+           $ans = new Answer3;
+            $ans->user_id = $request->user_id;
+            $ans->question_id = $request->question_id;
+            $ans->answer =  $request->answer;
+            $ans->save(); 
+        }
+        
+
+        return response()->json(['status'=> 200, 'message'=> 'success']);
+    }
+
+    public function section2_batch4(Request $request)
+    {
+        $find = Answer4::where('user_id',Auth::id())->where('question_id', $request->question_id)->first();
+        if($find) {
+            $find->update([
+                'answer'=> $request->answer
+            ]);
+        }else{
+           $ans = new Answer4;
+            $ans->user_id = $request->user_id;
+            $ans->question_id = $request->question_id;
+            $ans->answer =  $request->answer;
+            $ans->save(); 
+        }
+        
+
+        return response()->json(['status'=> 200, 'message'=> 'success']);
+    }
+
+    public function section2_batch5(Request $request)
+    {
+        $find = Answer5::where('user_id',Auth::id())->where('question_id', $request->question_id)->first();
+        if($find) {
+            $find->update([
+                'answer'=> $request->answer
+            ]);
+        }else{
+           $ans = new Answer5;
+            $ans->user_id = $request->user_id;
+            $ans->question_id = $request->question_id;
+            $ans->answer =  $request->answer;
+            $ans->save(); 
+        }
+        
+
+        return response()->json(['status'=> 200, 'message'=> 'success']);
+    }
+
+    public function section4_batch1(Request $request)
+    {
+        $find = Answer6::where('user_id',Auth::id())->where('question_id', $request->question_id)->first();
+        if($find) {
+            $find->update([
+                'answer'=> $request->answer
+            ]);
+        }else{
+           $ans = new Answer6;
+            $ans->user_id = $request->user_id;
+            $ans->question_id = $request->question_id;
+            $ans->answer =  $request->answer;
+            $ans->save(); 
+        }
+        
+
+        return response()->json(['status'=> 200, 'message'=> 'success']);
+    }
+
+    public function section4_batch2(Request $request)
+    {
+        $find = Answer7::where('user_id',Auth::id())->where('question_id', $request->question_id)->first();
+        if($find) {
+            $find->update([
+                'answer'=> $request->answer
+            ]);
+        }else{
+           $ans = new Answer7;
+            $ans->user_id = $request->user_id;
+            $ans->question_id = $request->question_id;
+            $ans->answer =  $request->answer;
+            $ans->save(); 
+        }
+        
+
+        return response()->json(['status'=> 200, 'message'=> 'success']);
+    }
+
+    public function section4_batch3(Request $request)
+    {
+        $find = Answer8::where('user_id',Auth::id())->where('question_id', $request->question_id)->first();
+        if($find) {
+            $find->update([
+                'answer'=> $request->answer
+            ]);
+        }else{
+           $ans = new Answer8;
+            $ans->user_id = $request->user_id;
+            $ans->question_id = $request->question_id;
+            $ans->answer =  $request->answer;
+            $ans->save(); 
+        }
+        
+
+        return response()->json(['status'=> 200, 'message'=> 'success']);
+    }
+
+    public function section4_batch4(Request $request)
+    {
+        $find = Answer9::where('user_id',Auth::id())->where('question_id', $request->question_id)->first();
+        if($find) {
+            $find->update([
+                'answer'=> $request->answer
+            ]);
+        }else{
+           $ans = new Answer9;
+            $ans->user_id = $request->user_id;
+            $ans->question_id = $request->question_id;
+            $ans->answer =  $request->answer;
+            $ans->save(); 
+        }
+        
+
+        return response()->json(['status'=> 200, 'message'=> 'success']);
+    }
+
+    public function section4_batch5(Request $request)
+    {
+        $find = Answer10::where('user_id',Auth::id())->where('question_id', $request->question_id)->first();
+        if($find) {
+            $find->update([
+                'answer'=> $request->answer
+            ]);
+        }else{
+           $ans = new Answer10;
+            $ans->user_id = $request->user_id;
+            $ans->question_id = $request->question_id;
+            $ans->answer =  $request->answer;
+            $ans->save(); 
+        }
+        
+
+        return response()->json(['status'=> 200, 'message'=> 'success']);
     }
 
     public function section3()
