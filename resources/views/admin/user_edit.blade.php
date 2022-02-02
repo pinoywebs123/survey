@@ -65,53 +65,134 @@
                 </div>
               </div>
               <div class="card-body px-0 pb-2">
-                <div class="table-responsive p-0">
-                  <table class="table align-items-center mb-0">
-                    <thead>
-                      <tr>
-                        
-                       
-                        <th class="text-uppercase text-uppercase">Name</th>
-                        <th class="text-uppercase text-uppercase">Email</th>
-                        <th class="text-uppercase text-uppercase">Contact</th>
-                        <th class="text-secondary ">Action</th>
-                        
-                        
-                      </tr>
-                    </thead>
-                    <tbody>
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+                @include('shared.notification')
+                <form role="form" class="text-start" action="{{route('register_check')}}" method="POST">
+                  @csrf
+                 
+                  <div class="row">
 
-                       
-                      @foreach($nonmembers as $user)
-                      <tr>
+                    <div class="col-lg-4 col-md-4">
+                      <div class="input-group input-group-outline my-3">
+                        <label class="form-label">First Name</label>
+                        <input type="text" class="form-control" name="first_name" value="{{$find->first_name}}" required>
+                      </div>
 
-                        <td class=" text-md product_align">
-                          <p class="text-xs font-weight-bold mb-0">{{$user->first_name}}</p>
-                          
-                        </td>
-                         <td class=" text-md product_align">
-                          <p class="text-xs font-weight-bold mb-0">{{$user->email}}</p>
-                          
-                        </td>
-                         <td class=" text-md product_align">
-                          <p class="text-xs font-weight-bold mb-0">{{$user->contact}}</p>
-                          
-                        </td>
-                        
-                        <td>
-                          <a href="{{route('users_update',$user->id)}}" class="btn btn-info btn-sm">EDIT</a>
-                          <a href="" class="btn btn-danger btn-sm">LOCK</a>
-                          <a href="{{route('view_user_survey',$user->id)}}" class="btn btn-primary btn-sm">View Survery</a>
-                        </td>
-                       
+                    </div>
 
-                      </tr>
-                      
-                      @endforeach
-                     
-                    </tbody>
-                  </table>
-                </div>
+                  <div class="col-lg-4 col-md-4">
+                      <div class="input-group input-group-outline my-3">
+                      <label class="form-label">Middle</label>
+                      <input type="text" class="form-control" name="middle_initial" value="{{$find->middle_initial}}" required>
+                    </div>
+                  </div>
+
+                  <div class="col-lg-4 col-md-4">
+                      <div class="input-group input-group-outline my-3">
+                      <label class="form-label">Last Name</label>
+                      <input type="text" class="form-control" name="last_name" value="{{$find->last_name}}" required>
+                    </div>
+                  </div>
+
+
+                  </div>
+
+                  <div class="row">
+                    <div class="col-lg-6 col-md-6">
+                      <div class="input-group input-group-outline my-3">
+                        <label class="form-label">Email</label>
+                        <input type="email" class="form-control" name="email" value="{{$find->email}}" required>
+                      </div>
+                    </div>
+
+                    <div class="col-lg-6 col-md-6">
+                      <div class="input-group input-group-outline my-3">
+                        <label class="form-label">Contact</label>
+                        <input type="text" class="form-control" name="contact" value="{{$find->contact}}" required  maxlength="13">
+                      </div>
+                    </div>
+
+                  </div>
+
+                  <div class="row">
+
+                    <div class="col-lg-4 col-md-4">
+                      <select class="form-select my-3" required name="course" >
+                        <option value="" >Course</option>
+                        <option value="BSIT" selected>BSIT</option>
+                        <option value="BSCS">BSCS</option>
+                    </select>
+                    </div>
+
+                    <div class="col-lg-4 col-md-4">
+                      <select class="form-select my-3" required name="year">
+                        <option value="">Year Level</option>
+                        <option value="I">I</option>
+                        <option value="II" selected>II</option>
+                        <option value="III">III</option>
+                        <option value="IV">IV</option>
+                        <option value="V">V</option>
+                        <option value="VI">VI</option>
+                    </select>
+                    </div>
+
+                    <div class="col-lg-4 col-md-4">
+                      <select class="form-select my-3" required name="gender" >
+                        <option value="">GENDER</option>
+                        <option value="FEMALE" {{$find->gender == 'FEMALE' ? 'selected': ''}} >FEMALE</option>
+                        <option value="MALE" {{$find->gender == 'MALE' ? 'selected': ''}}>MALE</option>
+                    </select>
+                    </div>
+                    
+
+                  </div>
+
+                  <div class="form-group my-3">
+                    <p>Do you have any psychiatric or medical conditions?</p>
+                    <input type="radio" class="" name="medical_condition" value="YES" required {{$find->medical_condition == 'YES' ? 'checked': ''}}> Yes
+                    <input type="radio" class="" name="medical_condition" value="NO" required {{$find->medical_condition == 'NO' ? 'checked': ''}}> No
+                  </div>
+
+                  <div class="form-group my-3">
+                    <p>Are you currently on medication?</p>
+                    <input type="radio" class="" name="current_medication" value="YES" required {{$find->current_medication == 'YES' ? 'checked': ''}}> Yes
+                    <input type="radio" class="" name="current_medication" value="NO" required {{$find->current_medication == 'NO' ? 'checked': ''}}> No
+                  </div>
+
+                  <div class="form-group my-3">
+                    <p>Are you currently undergoing psychotherapy or counselling?</p>
+                    <input type="radio" class="" name="counselling" value="YES" required {{$find->counselling == 'YES' ? 'checked': ''}}> Yes
+                    <input type="radio" class="" name="counselling" value="NO" required {{$find->counselling == 'NO' ? 'checked': ''}}> No
+                  </div>
+
+                  <div class="form-group my-3">
+                    <p>Place of Origin:</p>
+                    <input type="radio" class="" name="location" value="LUZON" required {{$find->location == 'LUZON' ? 'checked': ''}}> LUZON
+                    <input type="radio" class="" name="location" value="VISAYAS" required {{$find->location == 'VISAYAS' ? 'checked': ''}}> VISAYAS
+                    <input type="radio" class="" name="location" value="MINDANAO" required {{$find->location == 'MINDANAO' ? 'checked': ''}}> MINDANAO
+                  </div>
+    
+                  
+                  <div class="input-group input-group-outline mb-3">
+                    <label class="form-label">New Password</label>
+                    <input type="text" class="form-control" name="password" required>
+                  </div>
+                   
+                  
+                  <div class="text-center">
+                    <button type="submit" class="btn bg-gradient-primary w-100 my-4 mb-2">UPDATE</button>
+                    
+                  </div>
+                 
+                </form>
               </div>
             </div>
           </div>

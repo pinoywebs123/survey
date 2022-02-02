@@ -35,6 +35,8 @@ Route::post('/section4_batch5','UserController@section4_batch5')->name('section4
 
 Route::get('/home-admin','UserController@home_admin')->name('home_admin');
 Route::get('/users-list','UserController@users_list')->name('users_list');
+Route::get('/users-update/{id}','UserController@users_update')->name('users_update');
+Route::get('/view-user-survey/{id}','UserController@view_user_survey')->name('view_user_survey');
 Route::get('/admin-message','UserController@admin_message')->name('admin_message');
 
 }); 

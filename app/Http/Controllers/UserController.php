@@ -280,6 +280,27 @@ class UserController extends Controller
         return view('admin.user_list',compact('nonmembers'));
     }
 
+    public function users_update($id)
+    {
+        $find = User::find($id);
+        return view('admin.user_edit',compact('find'));
+    }
+
+    public function view_user_survey($id)
+    {
+        $find = User::find($id);
+
+        $section2 = SectionTwo::with('questions')->get();
+         $section2_batch2 = SectionTwoBatchTwo::with('questions')->get();
+         $section2_batch3 = SectionTwoBatchThree::with('questions')->get();
+         $section2_batch4 = SectionTwoBatchFour::with('questions')->get();
+         $section2_batch5 = SectionTwoBatchFive::with('questions')->get();
+
+        return view('admin.survey.section2',compact('find','section2','section2_batch2','section2_batch3','section2_batch4','section2_batch5'));
+
+       
+    }
+
     public function admin_message()
     {
         return view('admin.admin_message');
