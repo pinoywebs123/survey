@@ -3,6 +3,7 @@
 use Illuminate\Database\Seeder;
 use App\SectionThree;
 use App\QuestionListSectionThree;
+
 class SectionThreeSeeder extends Seeder
 {
     /**

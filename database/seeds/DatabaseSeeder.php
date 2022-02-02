@@ -24,5 +24,7 @@ class DatabaseSeeder extends Seeder
         $this->call(SectionFourBatchThreeSeeder::class);
         $this->call(SectionFourBatchFourSeeder::class);
         $this->call(SectionFourBatchFiveSeeder::class);
+
+        $this->call(SectionThreeSeeder::class);
     }
 }
