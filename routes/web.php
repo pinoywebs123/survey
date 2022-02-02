@@ -12,7 +12,7 @@ Route::get('/register','AuthController@register')->name('register');
 Route::post('/register_check','AuthController@register_check')->name('register_check');
 Route::get('/logout','AuthController@logout')->name('logout');
 
-Route::group(['middleware'=> 'auth'], function(){
+Route::group(['middleware'=> 'auth','cors'], function(){
 
 Route::get('/users','UserController@users')->name('users');
 Route::get('/section2','UserController@section2')->name('section2');
