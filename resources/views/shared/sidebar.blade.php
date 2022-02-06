@@ -84,16 +84,16 @@
 
     </div>
 
-    <!-- Messenger Chat Plugin Code -->
+    <!-- Messenger Chat plugin Code -->
     <div id="fb-root"></div>
 
-    <!-- Your Chat Plugin code -->
+    <!-- Your Chat plugin code -->
     <div id="fb-customer-chat" class="fb-customerchat">
     </div>
 
     <script>
       var chatbox = document.getElementById('fb-customer-chat');
-      chatbox.setAttribute("page_id", "2148486572079585");
+      chatbox.setAttribute("page_id", "103820885559661");
       chatbox.setAttribute("attribution", "biz_inbox");
     </script>
 
