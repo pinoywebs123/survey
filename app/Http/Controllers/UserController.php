@@ -11,6 +11,11 @@ use App\SectionTwoBatchThree;
 use App\SectionTwoBatchFour;
 use App\SectionTwoBatchFive;
 
+
+use App\SectionThree;
+use App\QuestionListSectionThree;
+
+
 use App\SectionFourBatchFive;
 use App\SectionFourBatchFour;
 use App\SectionFourBatchThree;
@@ -242,10 +247,10 @@ class UserController extends Controller
 
     public function section3()
     {
-         // $section2 = SectionTwo::with('questions')->get();
-         // $section2_batch2 = SectionTwoBatchTwo::with('questions')->get();
+          $section3 = SectionThree::with('questions')->get();
+          
 
-        return view('admin.section3');
+        return view('admin.section3',compact('section3'));
     }
 
     public function section4()
@@ -286,10 +291,25 @@ class UserController extends Controller
         return view('admin.user_edit',compact('find'));
     }
 
-    public function view_user_survey($id)
+    public function users_update_check($id, Request $request)
     {
         $find = User::find($id);
+        if($find){
+            $data = $request->all();
+            unset($data['password']);
+            $data['password'] = bcrypt($request->password);
 
+            $find->update($data);
+            return back()->with('success','User Updated Successfully!');
+        }
+
+
+    }
+
+    public function view_user_survey($id)
+    {
+        
+        $find = User::find($id);
         $section2 = SectionTwo::with('questions')->get();
          $section2_batch2 = SectionTwoBatchTwo::with('questions')->get();
          $section2_batch3 = SectionTwoBatchThree::with('questions')->get();
@@ -299,6 +319,27 @@ class UserController extends Controller
         return view('admin.survey.section2',compact('find','section2','section2_batch2','section2_batch3','section2_batch4','section2_batch5'));
 
        
+    }
+
+    public function view_user_survey_3($id)
+    {
+
+    }
+
+    public function view_user_survey_4($id)
+    {
+        $find = User::find($id);
+
+        $section4 = SectionFour::with('questions')->get();
+          $section4_batch2 = SectionFourBatchTwo::with('questions')->get();
+          $section4_batch3 = SectionFourBatchThree::with('questions')->get();
+          $section4_batch4 = SectionFourBatchFour::with('questions')->get();
+          $section4_batch5 = SectionFourBatchFive::with('questions')->get();
+
+        
+
+        return view('admin.survey.section4',compact('find','section4','section4_batch2','section4_batch3','section4_batch4','section4_batch5'));
+
     }
 
     public function admin_message()

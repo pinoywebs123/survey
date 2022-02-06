@@ -54,85 +54,38 @@
     </nav>
     <!-- End Navbar -->
     <div class="container-fluid py-4">
-      <h3>Batch 1</h3>
-          
-      <div class="row mt-4">
+      <h3>Section 3 Questions Set</h3>
+       <ul>
+         @foreach($section3 as $sec)
+            <tr>
 
-      </div>
+                <td class="align-middle text-left text-sm">
+                    <h3>Objectives:</h3>
+                    <p>{{$sec->objectives}}</p>
+                </td>
+
+                  <td class="align-middle text-left text-sm">
+                    <h3>Instructions:</h3>
+                    <p>{{$sec->instructions}}</p>
+                  </td>
+                       
+
+              </tr>
+                
+              <ol>
+                @foreach($sec->questions as $quest)
+                  <li>{{$quest->question_name}}</li>
+                @endforeach
+              </ol>
+                
+                     
+          @endforeach
+       </ul>   
       
       
     </div>
   </main>
 
-  <div class="modal" id="myModal">
-  <div class="modal-dialog">
-    <div class="modal-content">
-
-      <!-- Modal Header -->
-      <div class="modal-header">
-        <h4 class="modal-title" id="order_title"></h4>
-        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-      </div>
-
-      <!-- Modal body -->
-      <div class="modal-body">
-       
-       <form role="form" class="text-start" action="#" method="POST">
-                  @csrf
-                  <input type="hidden" name="user_id" id="user_id">
-                  <select class="form-select" required name="user_type" id="user_type">
-                      <option value="">Select User Type</option>
-                      <option value="admin">Admin</option>
-                      <option value="user">User</option>
-                  </select>
-
-                  <div class="input-group input-group-outline my-3">
-                    
-                    <input type="text" class="form-control" name="first_name" id="first_name">
-                  </div>
-                  <div class="input-group input-group-outline my-3">
-                    
-                    <input type="text" class="form-control" name="middle_initial" id="middle_initial">
-                  </div>
-                  <div class="input-group input-group-outline my-3">
-                    
-                    <input type="text" class="form-control" name="last_name" id="last_name">
-                  </div>
-                  <div class="input-group input-group-outline my-3">
-                    
-                    <input type="email" class="form-control" name="email" id="email">
-                  </div>
-                  <div class="input-group input-group-outline my-3">
-                   
-                    <input type="text" class="form-control" name="username" id="username">
-                  </div>
-                  <div class="input-group input-group-outline my-3">
-                    
-                    <input type="text" class="form-control" name="contact" id="contact">
-                  </div>
-                  <div class="input-group input-group-outline mb-3">
-                    <label class="form-label">Password (Optional)</label>
-                    <input type="text" class="form-control" name="password" id="password">
-                  </div>
-                   
-                  
-                  <div class="text-center">
-                    <button type="submit" class="btn bg-gradient-primary w-100 my-4 mb-2">Update</button>
-                    <button type="button" class="btn btn-default" data-bs-dismiss="modal">Close</button>
-                  </div>
-                 
-                </form>
-       
-      </div>
-
-      <!-- Modal footer -->
-      <div class="modal-footer">
-        
-      </div>
-
-    </div>
-  </div>
-</div>
   
   <!--   Core JS Files   -->
   <script src="{{URL::to('/assets/js/core/popper.min.js')}}"></script>

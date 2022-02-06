@@ -101,7 +101,9 @@
                         <td>
                           <a href="{{route('users_update',$user->id)}}" class="btn btn-info btn-sm">EDIT</a>
                           <a href="" class="btn btn-danger btn-sm">LOCK</a>
-                          <a href="{{route('view_user_survey',$user->id)}}" class="btn btn-primary btn-sm">View Survery</a>
+                          <a href="{{route('view_user_survey',$user->id)}}" class="btn btn-primary btn-sm">Survey 2</a>
+                          <a href="{{route('view_user_survey_3',$user->id)}}" class="btn btn-primary btn-sm">Survey 3</a>
+                          <a href="{{route('view_user_survey_4',$user->id)}}" class="btn btn-primary btn-sm">Survey 4</a>
                         </td>
                        
 

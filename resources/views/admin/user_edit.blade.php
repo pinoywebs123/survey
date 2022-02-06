@@ -75,7 +75,7 @@
                     </div>
                 @endif
                 @include('shared.notification')
-                <form role="form" class="text-start" action="{{route('register_check')}}" method="POST">
+                <form role="form" class="text-start" action="{{route('users_update_check',$find->id)}}" method="POST">
                   @csrf
                  
                   <div class="row">
