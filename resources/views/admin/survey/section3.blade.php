@@ -78,7 +78,9 @@
                     <h3>Instructions:</h3>
                     <p>{{$sec->instructions}}</p>
                   </td>
-                       
+                     @if( $sec->image != null )
+                      <img src="{{url('/images/')}}/{{$sec->image->image}}">
+                    @endif    
 
               </tr>
                 
