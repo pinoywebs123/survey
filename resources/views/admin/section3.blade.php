@@ -75,7 +75,26 @@
               <ol>
                 @foreach($sec->questions as $quest)
                   <li>{{$quest->question_name}}</li>
-                  <input type="text" name="answer" data-section_id="{{$quest->section_three_id }}" data-question_id="{{$quest->id}}" size="60" class="get_answer">
+                  <?php 
+                        $answer_result = \App\AnswerThree::where('question_id',$quest->id)->where('user_id', Auth::id())->first();
+                                    
+                            if($answer_result){
+                                ?>
+
+                                <input type="text" name="answer" data-section_id="{{$quest->section_three_id }}" data-question_id="{{$quest->id}}" size="60" class="get_answer" value="{{$answer_result->answer}}">
+                                      <?php
+                            }else {
+
+                            ?>
+                            <input type="text" name="answer" data-section_id="{{$quest->section_three_id }}" data-question_id="{{$quest->id}}" size="60" class="get_answer">
+                                      <?php
+                                    }
+                                    
+                                   
+                                    
+
+                  ?>
+                  
                 @endforeach
               </ol>
                 
@@ -104,14 +123,20 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
   <script type="text/javascript">
     $(document).ready(function(){
+
+      var token = '{{Session::token()}}';
+      var url = '{{route("section2_batch1")}}';
+      var url2 = '{{route("section3_check")}}';
+      var user_id = '{{Auth::id()}}';
+
       $(".question_list_id").change(function(){
 
         var answer = $(this).val();
-        var user_id = '{{Auth::id()}}';
-        var url = '{{route("section2_batch1")}}';
+        
+        
         var question_id = $(this).attr("data-question_id");
 
-        var token = '{{Session::token()}}';
+        
           $.ajax({
             method:'POST',
             url:url,
@@ -129,8 +154,18 @@
       $(".get_answer").blur(function(){
           var section_id = $(this).attr("data-section_id");
           var question_id = $(this).attr("data-question_id");
-          console.log(section_id);
-          console.log(question_id);
+          var answer = $(this).val();
+
+          $.ajax({
+            method:'POST',
+            url:url2,
+            data:{_token : token,user_id: user_id, answer: answer, question_id: question_id,section_id: section_id},
+              success:function(data) {
+                  console.log(data);
+                  
+                 
+              }
+          });
       });
 
 

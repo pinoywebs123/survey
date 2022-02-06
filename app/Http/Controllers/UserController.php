@@ -34,6 +34,8 @@ use App\Answer8;
 use App\Answer9;
 use App\Answer10;
 
+use App\AnswerThree;
+
 use Auth;
 
 class UserController extends Controller
@@ -251,6 +253,26 @@ class UserController extends Controller
           
 
         return view('admin.section3',compact('section3'));
+    }
+
+    public function section3_check(Request $request)
+    {
+        $find = AnswerThree::where('user_id',Auth::id())->where('question_id', $request->question_id)->first();
+        if($find) {
+            $find->update([
+                'answer'=> $request->answer
+            ]);
+        }else{
+           $ans = new AnswerThree;
+            $ans->user_id = $request->user_id;
+            $ans->question_id = $request->question_id;
+            $ans->answer =  $request->answer;
+            $ans->section_id = $request->section_id;
+            $ans->save(); 
+        }
+        
+
+        return response()->json(['status'=> 200, 'message'=> 'success']);
     }
 
     public function section4()
