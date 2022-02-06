@@ -55,6 +55,16 @@
     <!-- End Navbar -->
     <div class="container-fluid py-4">
       <h3>Section 3 Questions Set</h3>
+      @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+      @endif
+      @include('shared.notification')
        <ul>
          @foreach($section3 as $sec)
             <tr>
@@ -71,7 +81,15 @@
                        
 
               </tr>
-                
+              <form method="POST" action="{{route('section3_upload_image')}}"  enctype="multipart/form-data">
+                @csrf
+                <input type="file" name="image" >
+                <input type="hidden" name="section_id" value="{{$sec->id }}">
+                <input type="submit" value="Upload">
+              </form>
+              @if( $sec->image != null )
+                <img src="{{url('/images/')}}/{{$sec->image->image}}">
+              @endif  
               <ol>
                 @foreach($sec->questions as $quest)
                   <li>{{$quest->question_name}}</li>

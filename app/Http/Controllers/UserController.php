@@ -35,6 +35,7 @@ use App\Answer9;
 use App\Answer10;
 
 use App\AnswerThree;
+use App\AnswerImage;
 
 use Auth;
 
@@ -249,7 +250,7 @@ class UserController extends Controller
 
     public function section3()
     {
-        $section3 = SectionThree::with('questions')->get();
+        $section3 = SectionThree::with('questions')->with('image')->get();
           
 
         return view('admin.section3',compact('section3'));
@@ -369,5 +370,38 @@ class UserController extends Controller
     public function admin_message()
     {
         return view('admin.admin_message');
+    }
+
+    public function section3_upload_image(Request $request)
+    {
+
+        $request->validate([
+            'image' => 'required|mimes:jpeg,jpg,png,jpg,gif,svg|max:2048',
+        ]);
+
+        $imageName = time().'.'.$request->image->extension(); 
+
+        $find = AnswerImage::where('user_id',Auth::id())->where('section_id', $request->section_id)->first();
+        $request->image->move(public_path('images'), $imageName);
+        
+        if( $find ) {
+            $find->update(['image'=> $imageName]);
+        }else {
+
+
+
+            $save_image = new AnswerImage;
+            $save_image->section_id = $request->section_id;
+            $save_image->user_id = Auth::id();
+            $save_image->image = $imageName;
+            $save_image->save();
+
+        }
+    
+         
+     
+        
+
+        return back()->with('success','Uploaded Successfully!');
     }
 }

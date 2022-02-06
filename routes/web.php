@@ -34,6 +34,7 @@ Route::post('/section4_batch4','UserController@section4_batch4')->name('section4
 Route::post('/section4_batch5','UserController@section4_batch5')->name('section4_batch5');
 
 Route::post('/section3_check','UserController@section3_check')->name('section3_check');
+Route::post('/section3-upload-image','UserController@section3_upload_image')->name('section3_upload_image');
 
 Route::get('/home-admin','UserController@home_admin')->name('home_admin');
 Route::get('/users-list','UserController@users_list')->name('users_list');
