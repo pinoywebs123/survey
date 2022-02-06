@@ -249,7 +249,7 @@ class UserController extends Controller
 
     public function section3()
     {
-          $section3 = SectionThree::with('questions')->get();
+        $section3 = SectionThree::with('questions')->get();
           
 
         return view('admin.section3',compact('section3'));
@@ -345,7 +345,9 @@ class UserController extends Controller
 
     public function view_user_survey_3($id)
     {
-
+        $find = User::find($id);
+        $section3 = SectionThree::with('questions')->get();
+        return view('admin.survey.section3',compact('find','section3'));
     }
 
     public function view_user_survey_4($id)
