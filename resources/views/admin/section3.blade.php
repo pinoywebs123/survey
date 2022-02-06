@@ -75,6 +75,7 @@
               <ol>
                 @foreach($sec->questions as $quest)
                   <li>{{$quest->question_name}}</li>
+                  <input type="text" name="answer" data-section_id="{{$quest->section_three_id }}" data-question_id="{{$quest->id}}" size="60" class="get_answer">
                 @endforeach
               </ol>
                 
@@ -123,6 +124,13 @@
           });
         
 
+      });
+
+      $(".get_answer").blur(function(){
+          var section_id = $(this).attr("data-section_id");
+          var question_id = $(this).attr("data-question_id");
+          console.log(section_id);
+          console.log(question_id);
       });
 
 

@@ -22,14 +22,14 @@
           </a>
         </li>
 
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a class="nav-link text-white {{Request::segment(1) == 'admin-message' ? 'active bg-gradient-primary': ''}}" href="{{route('admin_message')}}">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">account_circle</i>
             </div>
             <span class="nav-link-text ms-1">MESSAGE</span>
           </a>
-        </li>
+        </li> -->
 
 
         @endif
