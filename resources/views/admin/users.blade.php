@@ -77,6 +77,47 @@
                       </div>
                     </div>
 
+                    <div class="col-xl-12 col-sm-12 mb-xl-0 mb-4">
+                      <div class="card">
+                        <div class="card-header p-3 pt-2">
+                          <div class="icon icon-lg icon-shape bg-gradient-dark shadow-dark text-center border-radius-xl mt-n4 position-absolute">
+                            <i class="material-icons opacity-10">weekend</i>
+                          </div>
+                          <div class="text-end pt-1">
+                            <p class="text-sm mb-0 text-capitalize">Welcome </p>
+                            <h4 class="mb-0">How to Use this App:</h4>
+                          </div>
+                        </div>
+                        <hr class="dark horizontal my-0">
+                        <div class="card-footer p-3">
+                          <p class="mb-0">
+                           This App is meant to be interactive. It is like a diary that will ask you to upload photos and images you take or someone else took for you, while other sections will prompt you to write personal responses
+                          </p>
+
+                          <p class="mb-0">
+                            With your finger, tap the camera icon to upload a photo. Tap the "YOUR RESPONSE HERE" to write your response to the guide questions. You may respond in English or Filipino language. Moreover, you are requested not to do editing of your photographs. You can take as many shots as you would like and come up with the best among the rest to upload without editing the picture. However, you may change the hue of the photographs into coloured, black and white or sepia. Remember, this is not a creativity or art platform. This is about self-expression and self-discovery. You don't have to upload perfect pictures.
+                          </p>
+
+                          <p class="mb-0">
+                            It is also essential that you don't make any environmental manipulation that could harm yourself or others, and you could not photograph harm to yourself or others. 
+                          </p>
+
+                          <p class="mb-0">
+                            When you are done, you can scroll down and save. You can change photos or edit your responses anytime. This therapeutic plan includes eight (8) modules that you can finish for a month (2 modules per week) or less depending on your pacing. You can do more than two sessions a week, though. It is recommended that you first read what photos to upload before starting a session. Take pictures with your mobile phone camera any time of the day. If you can afford at least 15 minutes of your day, go through the session, follow the instructions, and answer the guide questions. All eight sessions have the same format of activity – photo upload, then open-ended questions. The difference is in the objectives for each session
+                          </p>
+
+                          <p class="mb-0">
+                            However, you must give your full attention and intention to the work and be very honest about how you feel and what thoughts come to you as you go through the process. I encourage you to get into the plan and see if it works for you
+                          </p>
+
+                          <p class="mb-0">
+                            Finally, a chatbox is provided. If you feel that the exercises are too much for you emotionally and it's not in any way helping you, the chatbox is for you to reach out for help. You will be directed to your mental health professional.
+                          </p>
+                          
+                        </div>
+                      </div>
+                    </div>
+
                     
 
                    
